@@ -754,8 +754,27 @@ sudo mkinitcpio -p linux #此处要是自己的内核，例如zen的话是linux-
 ```
 - 重启电脑
 #### 创建显卡直通虚拟机
+
+- 安装ovmf
+```
+sudo pacman -S edk2-ovmf
+```
+编辑配置文件
+```
+sudo vim /etc/libvirt/qemu.conf
+```
+```
+nvram = [
+	"/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd"
+]
+```
+重启服务
+```
+sudo systemctl restart libvirtd
+```
+
 virt-manager的虚拟机页面内添加设备，PCI Host Device里找到要直通的显卡。 然后USB hostDevice里面把鼠标键盘也直通进去。
-#### 可以
+
 ## 笔本显卡切换
 ***！！！警告！！！做好快照存档***
 
