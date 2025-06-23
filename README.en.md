@@ -1,4 +1,4 @@
-# Choose language: [**ENGLISH-AItran**](./README.en.md) | [中文](./README.md)
+# Choose language: [**ENGLISH-AI-tran.**](./README.en.md) | [中文](./README.md)
 
 
 # Installing the System
