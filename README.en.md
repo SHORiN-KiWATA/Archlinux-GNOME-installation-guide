@@ -755,8 +755,26 @@ sudo mkinitcpio -p linux # Use your kernel here, e.g., linux-zen for Zen
 ```
 - Reboot
 #### Create Graphics Card Passthrough Virtual Machine
+
+- install ovmf
+```
+sudo pacman -S edk2-ovmf
+```
+edit conf
+```
+sudo vim /etc/libvirt/qemu.conf
+```
+```
+nvram = [
+	"/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd"
+]
+```
+restart service
+```
+sudo systemctl restart libvirtd
+```
 In virt-manager’s virtual machine page, add a device; find the graphics card to pass through in PCI Host Device. Then, in USB Host Device, pass through the mouse and keyboard as well
-#### Possible
+
 ## Laptop Graphics Switching
 ***!!! Warning !!! Make sure to create a snapshot archive***
 
